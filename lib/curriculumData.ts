@@ -1,7 +1,7 @@
 export type Subject = "Biology" | "Chemistry" | "Physics";
 
 export interface ContentBlock {
-  type: "text" | "definition" | "formula" | "diagram" | "important" | "example";
+  type: "text" | "definition" | "formula" | "diagram" | "important" | "example" | "image";
   content: string;
   diagramUrl?: string; // Optional URL or placeholder name for SVG/Images
 }

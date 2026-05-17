@@ -1,7 +1,8 @@
 import { curriculumData } from "@/lib/curriculumData";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, BookOpen, FlaskConical, Target, CheckCircle2 } from "lucide-react";
+import Image from "next/image";
+import { ArrowLeft, BookOpen, FlaskConical, Target, CheckCircle2, AlertTriangle, Lightbulb, ImageIcon } from "lucide-react";
 import { AcidsBasesSimulator } from "@/components/simulators/AcidsBasesSimulator";
 import { MotionSimulator } from "@/components/simulators/MotionSimulator";
 import { PlantAnatomySimulator } from "@/components/simulators/PlantAnatomySimulator";
@@ -119,13 +120,65 @@ export default async function TopicPage({ params }: TopicPageProps) {
             }
             if (block.type === 'diagram') {
               return (
-                <div key={idx} className="bg-white dark:bg-slate-900 border border-border p-8 rounded-2xl my-8 flex flex-col items-center shadow-sm">
+                <div key={idx} className="bg-white dark:bg-slate-900 border border-border p-8 rounded-2xl my-8 flex flex-col items-center shadow-sm hover:shadow-md transition-shadow">
                   <div className="w-full max-w-lg aspect-video bg-secondary-100 dark:bg-secondary-800/50 rounded-lg flex items-center justify-center text-foreground/50 italic mb-4">
                     [Diagram: {block.content}]
                   </div>
-                  <p className="text-sm text-foreground/60 text-center">
+                  <p className="text-sm text-foreground/60 text-center font-medium">
                     Figure {idx + 1}: {block.content}
                   </p>
+                </div>
+              );
+            }
+            if (block.type === 'important') {
+              return (
+                <div key={idx} className="bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-500 p-6 rounded-r-xl my-6 shadow-sm">
+                  <div className="flex items-center gap-2 mb-2 text-amber-700 dark:text-amber-400 font-bold">
+                    <AlertTriangle size={20} />
+                    <span>Important Note</span>
+                  </div>
+                  <p className="text-lg text-foreground/90 font-medium">
+                    {block.content}
+                  </p>
+                </div>
+              );
+            }
+            if (block.type === 'example') {
+              return (
+                <div key={idx} className="bg-cyan-50 dark:bg-cyan-900/20 border-l-4 border-cyan-500 p-6 rounded-r-xl my-6 shadow-sm">
+                  <div className="flex items-center gap-2 mb-2 text-cyan-700 dark:text-cyan-400 font-bold">
+                    <Lightbulb size={20} />
+                    <span>Example</span>
+                  </div>
+                  <p className="text-lg text-foreground/90 italic">
+                    {block.content}
+                  </p>
+                </div>
+              );
+            }
+            if (block.type === 'image') {
+              return (
+                <div key={idx} className="my-8 flex flex-col items-center overflow-hidden rounded-2xl shadow-sm border border-border bg-secondary-50/50 dark:bg-slate-800/20 group">
+                  <div className="w-full relative min-h-[300px] flex items-center justify-center bg-secondary-100 dark:bg-secondary-800/50">
+                    {block.diagramUrl ? (
+                      <Image 
+                        src={block.diagramUrl} 
+                        alt={block.content} 
+                        fill 
+                        className="object-contain group-hover:scale-105 transition-transform duration-500" 
+                      />
+                    ) : (
+                      <div className="flex flex-col items-center gap-2 text-foreground/40">
+                        <ImageIcon size={48} className="opacity-50" />
+                        <span className="italic font-medium">Image content placeholder</span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="w-full bg-white dark:bg-slate-900 p-4 border-t border-border">
+                    <p className="text-sm text-foreground/70 text-center font-medium">
+                      {block.content}
+                    </p>
+                  </div>
                 </div>
               );
             }
