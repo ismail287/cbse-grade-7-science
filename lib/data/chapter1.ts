@@ -2,227 +2,178 @@ import { Chapter } from "../curriculumData";
 
 export const chapter1: Chapter = {
   id: "1",
-  title: "Nutrition in Plants",
-  subject: "Biology",
-  description: "Learn how plants synthesize their food, types of nutrition, and how nutrients are replenished in the soil.",
+  title: "Exploration: Entering the World of Secondary Science",
+  subject: "Physics",
+  description: "Learn how scientific ideas help us make sense of nature, technology, and our place within them.",
   topics: [
     {
       id: "1.1",
-      title: "Mode of Nutrition in Plants",
+      title: "The World of Secondary Science",
       simulatorType: "none",
       contentBlocks: [
         {
           type: "text",
-          content: "In Class VI you learnt that food is essential for all living organisms. You also learnt that carbohydrates, proteins, fats, vitamins and minerals are components of food. These components of food are necessary for our body and are called nutrients."
+          content: "In the middle stage, science invited you to be curious and observe the world closely, to ask questions, and to find out how things work. As you now enter the secondary stage, this journey continues, but with an emphasis on deep exploration."
         },
         {
           type: "important",
-          content: "Plants can make their food themselves but animals including humans cannot. They get it from plants or animals that eat plants. Thus, humans and animals are directly or indirectly dependent on plants."
-        },
-        {
-          type: "definition",
-          content: "Nutrition: The mode of taking food by an organism and its utilisation by the body. The nutrients enable living organisms to build their bodies, to grow, to repair damaged parts of their bodies and provide the energy to carry out life processes."
+          content: "Science is not only about what we know, but also about how we know it — how observations lead to measurements, how patterns are expressed using symbols and equations, how models are built to represent complex systems, and how ideas are tested, often revised, and sometimes even discarded."
         },
         {
           type: "image",
-          content: "Living organisms require nutrition for growth and energy",
-          diagramUrl: ""
-        },
-        {
-          type: "text",
-          content: "Based on how they obtain food, the mode of nutrition is broadly divided into two categories: Autotrophic and Heterotrophic."
+          content: "To reflect the approach of this textbook, the page numbers have been thoughtfully designed, and are framed by a magnifying glass and a compass. The magnifying glass symbolises careful observation. The compass reminds us that exploration also needs direction.",
+          diagramUrl: "/images/chapter1/magnifying_compass.png"
         },
         {
           type: "definition",
-          content: "Autotrophic Nutrition: The mode of nutrition in which organisms make food themselves from simple substances is called autotrophic (auto = self; trophos = nourishment) nutrition. Therefore, plants are called autotrophs."
+          content: "Models: These are simplified ways of looking at real systems that focus only on what is most important for a given question. The natural world is complex, and studying it in full detail is often impossible. To make sense of this complexity, science uses models."
         },
         {
           type: "example",
-          content: "Green plants like mango trees, rose bushes, and even tiny algae floating in ponds are all autotrophs."
-        },
-        {
-          type: "definition",
-          content: "Heterotrophic Nutrition: Animals and most other organisms take in ready-made food prepared by the plants. They are called heterotrophs (heteros = other)."
+          content: "In physics, a moving car may be represented as a single point, while in chemistry, atoms and molecules are drawn as spheres and bonds. In biology, cells are shown as diagrams highlighting key parts, and in earth science, the Earth may be treated as a smooth sphere layered into distinct regions."
         },
         {
           type: "example",
-          content: "Lions, deer, humans, and even non-green plants like fungi are heterotrophs because they cannot synthesize their own food."
+          content: "Example 1.1: A cricket shot. Think of a cricket ball being hit for a six. You want to make a simple model. We must ask, 'Will the ball cross the boundary without hitting the ground first?'. The mass of the ball, and the speed and direction in which it has been hit will be very important. Air resistance, the spin of the ball, and the stitching of the threads at the seam have smaller effects that can be ignored in a simple model."
         }
       ],
       quiz: [
         {
           id: "1.1-q1",
-          question: "Organisms that make their own food are called:",
-          options: ["Heterotrophs", "Autotrophs", "Saprotrophs", "Parasites"],
+          question: "Why do scientists use models?",
+          options: ["Because reality is too simple", "To focus on what is most important for a given question", "To avoid doing experiments", "Because mathematics requires models"],
           correctAnswerIndex: 1,
-          explanation: "Auto means self, and trophos means nourishment. Plants are autotrophs."
-        },
-        {
-          id: "1.1-q2",
-          question: "Which of the following is NOT a nutrient?",
-          options: ["Carbohydrates", "Proteins", "Sunlight", "Vitamins"],
-          correctAnswerIndex: 2,
-          explanation: "Sunlight is an energy source for plants, not a chemical nutrient consumed by humans."
+          explanation: "Models simplify real systems to focus on the key variables needed to answer a specific question."
         }
       ]
     },
     {
       id: "1.2",
-      title: "Photosynthesis: Food Making Process in Plants",
-      simulatorType: "plant-anatomy",
+      title: "The Language of Science",
+      simulatorType: "none",
       contentBlocks: [
         {
           type: "text",
-          content: "Leaves are the food factories of plants. Therefore, all the raw materials must reach the leaf. Water and minerals present in the soil are absorbed by the roots and transported to the leaves."
-        },
-        {
-          type: "image",
-          content: "Section of a leaf showing stomata and guard cells",
-          diagramUrl: ""
+          content: "As you explore science more deeply, you will notice that it uses language in a very careful and precise way. Many words that we use in everyday life, such as force, work, cell, or reaction, have specific meanings in science."
         },
         {
           type: "definition",
-          content: "Stomata: Tiny pores present on the surface of leaves through which carbon dioxide from air is taken in. These pores are surrounded by 'guard cells'."
-        },
-        {
-          type: "text",
-          content: "Water and minerals are transported to the leaves by the vessels which run like pipes throughout the root, the stem, the branches and the leaves. They form a continuous path or passage for the nutrients to reach the leaf."
+          content: "Symbols and Units: Quantities, such as mass, velocity, force, and electric current are represented by symbols like m, v, F, and I, each associated with a defined unit."
         },
         {
           type: "important",
-          content: "The leaves have a green pigment called chlorophyll. It helps leaves to capture the energy of the sunlight. This energy is used to synthesise (prepare) food from carbon dioxide and water."
-        },
-        {
-          type: "text",
-          content: "Since the synthesis of food occurs in the presence of sunlight, it is called photosynthesis (photo: light; synthesis: to combine). So we find that chlorophyll, sunlight, carbon dioxide and water are necessary to carry out the process of photosynthesis. It is a unique process on the earth. The solar energy is captured by the leaves and stored in the plant in the form of food."
-        },
-        {
-          type: "important",
-          content: "Thus, sun is the ultimate source of energy for all living organisms."
-        },
-        {
-          type: "formula",
-          content: "Carbon dioxide + Water --(Sunlight / Chlorophyll)--> Carbohydrate + Oxygen"
+          content: "Science uses a shared language of specific terms, symbols, and units. This allows scientists across the world to describe observations, compare results, and build ideas clearly and unambiguously."
         },
         {
           type: "image",
-          content: "Diagram showing photosynthesis",
-          diagramUrl: ""
+          content: "A vegetable seller using a pan balance to measure mass.",
+          diagramUrl: "/images/chapter1/pan_balance.png"
         },
         {
           type: "example",
-          content: "Besides leaves, photosynthesis also takes place in other green parts of the plant — in green stems and green branches. The desert plants have scale- or spine-like leaves to reduce loss of water by transpiration. These plants have green stems which carry out photosynthesis."
+          content: "Airplane fuel miscalculation: In a well-known incident, a passenger aircraft ran out of fuel mid-flight due to a mix-up in units. The ground crew miscalculated the fuel required, since they used the density of fuel in pounds (lb) per litre rather than kilograms (kg) per litre."
         },
         {
           type: "text",
-          content: "During the process oxygen is released. The presence of starch in leaves indicates the occurrence of photosynthesis. Starch is also a carbohydrate."
+          content: "To make this even more precise, science often turns to mathematics. Mathematics allows relationships between quantities to be expressed clearly and tested carefully."
+        },
+        {
+          type: "example",
+          content: "Why is the speed of light denoted by 'c'? It comes from the Latin word celeritas, meaning speed. Today, the speed of light is one of the physical constants, defined to be exactly 299,792,458 m/s."
         }
       ],
       quiz: [
         {
           id: "1.2-q1",
-          question: "What is the green pigment in leaves called?",
-          options: ["Stomata", "Chloroplast", "Chlorophyll", "Guard cell"],
-          correctAnswerIndex: 2,
-          explanation: "Chlorophyll captures the sunlight required for photosynthesis."
-        },
-        {
-          id: "1.2-q2",
-          question: "Which gas is released during photosynthesis?",
-          options: ["Carbon Dioxide", "Nitrogen", "Hydrogen", "Oxygen"],
-          correctAnswerIndex: 3,
-          explanation: "Plants take in carbon dioxide and release oxygen during photosynthesis."
-        },
-        {
-          id: "1.2-q3",
-          question: "What is the ultimate source of energy for all living organisms?",
-          options: ["Water", "Soil", "Sun", "Chlorophyll"],
-          correctAnswerIndex: 2,
-          explanation: "The solar energy from the sun is captured by leaves and stored as food, making the sun the ultimate source of energy."
+          question: "Why are standard (SI) units used everywhere?",
+          options: ["They avoid conversions and errors", "They are historical traditions", "They make calculations more difficult", "They are easier to memorize"],
+          correctAnswerIndex: 0,
+          explanation: "Using standard units everywhere avoids conversions and potentially dangerous errors."
         }
       ]
     },
     {
       id: "1.3",
-      title: "Other Modes of Nutrition in Plants",
+      title: "Theories, Laws, and Predictions",
       simulatorType: "none",
       contentBlocks: [
         {
-          type: "text",
-          content: "There are some plants which do not have chlorophyll. They cannot synthesize their food. How do they survive? They use the heterotrophic mode of nutrition."
+          type: "definition",
+          content: "Scientific Law: A law usually describes a regular pattern observed in nature, often expressed using words or mathematical relationships. For example, Newton's laws of motion."
         },
         {
           type: "definition",
-          content: "Parasite: A plant that derives its food from another living plant (the host). Example: Cuscuta (Amarbel)."
+          content: "Scientific Theory: A theory goes a step further and provides an explanation of why those patterns occur, usually based on evidence gathered over time. For example, the atomic theory explains how molecules are formed."
+        },
+        {
+          type: "definition",
+          content: "Scientific Principle: Principles are broad ideas that help us make sense in a given situation. For example, the principle of conservation of energy."
+        },
+        {
+          type: "important",
+          content: "In science, a theory does not mean a guess or an untested idea, it is an explanation based on careful testing and critical examination. These ideas are always open to improvement and often change as new evidence becomes available."
+        },
+        {
+          type: "text",
+          content: "One of the most remarkable strengths of science is its ability to make predictions. When laws, theories, and models are well established, they allow us to anticipate what will happen under new or different conditions."
         },
         {
           type: "example",
-          content: "Insectivorous Plants: Pitcher plant. The leaf is modified into a pitcher-like structure. When an insect lands in the pitcher, the lid closes and the trapped insect is digested by digestive juices secreted in the pitcher."
+          content: "Example 1.2: How do we check predictions? Varsha told her friend Meghna, 'It will rain this afternoon because the clouds look dark'. Meghna could ask Varsha for measurable evidence: 'What is today's wind speed and direction? Is the temperature dropping?'"
+        },
+        {
+          type: "example",
+          content: "Checking 'viral' claims on social media: Is eating food harmful during an eclipse? An eclipse is just a play of shadows. What physical change occurs during an eclipse? Does temperature change significantly? You will conclude that no physical, chemical, or biological mechanism supports such a claim."
         }
       ],
       quiz: [
         {
           id: "1.3-q1",
-          question: "Cuscuta is an example of a:",
-          options: ["Autotroph", "Parasite", "Saprotroph", "Host"],
-          correctAnswerIndex: 1,
-          explanation: "Cuscuta deprives the host plant of valuable nutrients, hence it is a parasite."
+          question: "What is the difference between a scientific law and a scientific theory?",
+          options: ["A law is a guess, a theory is a fact", "A law explains why patterns occur, a theory describes the pattern", "A law describes a regular pattern in nature, a theory explains why the pattern occurs", "There is no difference"],
+          correctAnswerIndex: 2,
+          explanation: "Laws describe patterns (often with mathematics), while theories provide explanations for those patterns based on evidence."
         }
       ]
     },
     {
       id: "1.4",
-      title: "Saprotrophs",
+      title: "Estimation and Problem Solving",
       simulatorType: "none",
       contentBlocks: [
         {
           type: "text",
-          content: "You might have seen packets of mushrooms sold in the market or fluffy umbrella-like patches growing in moist soils or on rotting wood. These organisms are called fungi."
+          content: "Learning to estimate helps you build intuition, detect errors, and develop confidence in your thinking. Exact values are not always necessary, especially in the early stages of reasoning. Often, an approximate estimate is enough to tell us whether a result is reasonable or impossible."
         },
         {
-          type: "definition",
-          content: "Saprotrophic Nutrition: This mode of nutrition in which organisms take in nutrients from dead and decaying matter is called saprotrophic nutrition. Such organisms are called saprotrophs."
+          type: "image",
+          content: "Rice being cooked on a gas stove",
+          diagramUrl: "/images/chapter1/rice_cooking.png"
         },
         {
           type: "example",
-          content: "Fungi also grow on pickles, leather, clothes and other articles that are left in hot and humid weather for a long time."
+          content: "How much rice would feed a family of four for a month? An average adult needs about 2000 - 2500 kilocalories per day. We can estimate the daily requirement and check whether the answer makes sense. A few tonnes is far too much, while 100g for a month is clearly too little."
+        },
+        {
+          type: "example",
+          content: "Example 1.3: Estimate how many litres of air you breathe in one day. We take roughly 18-22 thousand breaths a day. One breath is perhaps about 0.5 litre (since it takes 4-5 breaths to fill a 2-litre balloon). So we breathe in about 10,000 litres of air a day!"
+        },
+        {
+          type: "important",
+          content: "To make sense of the world fully, we need to connect multiple ways of knowing and expressing ideas, each enriching the other. Solving real problems requires knowledge from several branches of science."
+        },
+        {
+          type: "example",
+          content: "How does a mask really work? Understanding how a mask works requires concepts from physics (particle motion), chemistry (properties of polymer fibres), biology (behaviour of viruses), and mathematics (modelling filtration efficiency)."
         }
       ],
       quiz: [
         {
           id: "1.4-q1",
-          question: "Which mode of nutrition do fungi use?",
-          options: ["Autotrophic", "Parasitic", "Saprotrophic", "Insectivorous"],
-          correctAnswerIndex: 2,
-          explanation: "Fungi take nutrients from dead and decaying matter."
-        }
-      ]
-    },
-    {
-      id: "1.5",
-      title: "How Nutrients are Replenished in the Soil",
-      simulatorType: "none",
-      contentBlocks: [
-        {
-          type: "text",
-          content: "Plants absorb minerals and nutrients from the soil, so their amounts in the soil keep on declining. Fertilizers and manures contain nutrients such as nitrogen, potassium, and phosphorus."
-        },
-        {
-          type: "important",
-          content: "Though nitrogen gas is available in plenty in the air, plants cannot use it in the manner they can use carbon dioxide. They need nitrogen in a soluble form."
-        },
-        {
-          type: "text",
-          content: "The bacterium called Rhizobium can take atmospheric nitrogen and convert it into a usable form. Rhizobium cannot make its own food, so it lives in the roots of gram, peas, moong, beans and other legumes, providing them with nitrogen in exchange for food and shelter. This is a symbiotic relationship."
-        }
-      ],
-      quiz: [
-        {
-          id: "1.5-q1",
-          question: "Which bacteria helps in nitrogen fixation for leguminous plants?",
-          options: ["Lactobacillus", "Rhizobium", "Streptococcus", "E. coli"],
+          question: "Why is estimation a useful scientific skill?",
+          options: ["Because exact calculations are too hard", "To tell whether a result is reasonable or impossible", "To avoid doing experiments", "Because math is not used in science"],
           correctAnswerIndex: 1,
-          explanation: "Rhizobium lives in root nodules and fixes atmospheric nitrogen."
+          explanation: "Estimation helps build intuition and verify if a detailed answer or claim makes sense in the real world."
         }
       ]
     }
