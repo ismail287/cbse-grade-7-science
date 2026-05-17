@@ -1,6 +1,6 @@
 "use client";
 
-import { Chapter } from "@/lib/curriculumData";
+import { Chapter, curriculumData } from "@/lib/curriculumData";
 import { ChapterCard } from "./ChapterCard";
 import { useProgress } from "@/context/ProgressContext";
 import { useEffect, useState } from "react";
@@ -18,27 +18,40 @@ export function ChapterCardWrapper({ chapter, index }: ChapterCardWrapperProps) 
     setMounted(true);
   }, []);
 
-  // Avoid hydration mismatch by rendering a skeleton or nothing until hydrated
   if (!mounted || !isHydrated) {
     return (
       <div className="rounded-2xl border border-border bg-card/50 h-64 animate-pulse" />
     );
   }
 
-  const isCompleted = progress.completedChapters.includes(chapter.id);
-  const score = progress.quizScores[chapter.id] || 0;
+  const totalTopicsCount = chapter.topics.length;
+  const completedTopicsCount = chapter.topics.filter(t => 
+    progress.completedTopics.includes(t.id)
+  ).length;
   
-  // Logic: Chapter 1 is always unlocked. Others are unlocked if the previous chapter is completed.
-  // Actually, to make prototyping easier, let's unlock everything, OR we can implement the lock logic if desired.
-  // The user requested "lock/unlock visual states", so let's enforce sequential unlocking.
-  const isLocked = index > 0 && !progress.completedChapters.includes(String(index));
+  const isCompleted = totalTopicsCount > 0 && completedTopicsCount === totalTopicsCount;
+  
+  // Calculate average quiz score for the chapter
+  let totalScore = 0;
+  chapter.topics.forEach(t => {
+    totalScore += progress.topicQuizScores[t.id] || 0;
+  });
+  const avgScore = totalTopicsCount > 0 ? Math.round(totalScore / totalTopicsCount) : 0;
+  
+  // Chapter is unlocked if it's the first chapter or the previous chapter is completed
+  const previousChapter = index > 0 ? curriculumData[index - 1] : null;
+  const isLocked = previousChapter ? 
+    previousChapter.topics.filter(t => progress.completedTopics.includes(t.id)).length !== previousChapter.topics.length 
+    : false;
 
   return (
     <ChapterCard 
       chapter={chapter} 
       isCompleted={isCompleted} 
       isLocked={isLocked} 
-      score={score} 
+      completedTopicsCount={completedTopicsCount}
+      totalTopicsCount={totalTopicsCount}
+      avgScore={avgScore} 
     />
   );
 }

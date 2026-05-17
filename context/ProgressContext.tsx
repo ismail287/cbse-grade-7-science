@@ -3,14 +3,14 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 type ProgressState = {
-  completedChapters: string[];
-  quizScores: Record<string, number>;
+  completedTopics: string[]; // e.g., ["1.1", "1.2", "4.1"]
+  topicQuizScores: Record<string, number>; // Keyed by topicId, e.g., "1.1": 100
 };
 
 type ProgressContextType = {
   progress: ProgressState;
-  markChapterCompleted: (chapterId: string) => void;
-  saveQuizScore: (chapterId: string, score: number) => void;
+  markTopicCompleted: (topicId: string) => void;
+  saveTopicQuizScore: (topicId: string, score: number) => void;
   isHydrated: boolean;
 };
 
@@ -18,19 +18,19 @@ const ProgressContext = createContext<ProgressContextType | undefined>(undefined
 
 export function ProgressProvider({ children }: { children: React.ReactNode }) {
   const [progress, setProgress] = useState<ProgressState>({
-    completedChapters: [],
-    quizScores: {},
+    completedTopics: [],
+    topicQuizScores: {},
   });
   const [isHydrated, setIsHydrated] = useState(false);
 
   // Load from local storage on mount
   useEffect(() => {
-    const saved = localStorage.getItem("cbse-science-progress");
+    const saved = localStorage.getItem("cbse-science-progress-topics");
     if (saved) {
       try {
         setProgress(JSON.parse(saved));
       } catch (e) {
-        console.error("Failed to parse progress from local storage", e);
+        console.error("Failed to parse topic progress from local storage", e);
       }
     }
     setIsHydrated(true);
@@ -39,32 +39,32 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   // Save to local storage on change
   useEffect(() => {
     if (isHydrated) {
-      localStorage.setItem("cbse-science-progress", JSON.stringify(progress));
+      localStorage.setItem("cbse-science-progress-topics", JSON.stringify(progress));
     }
   }, [progress, isHydrated]);
 
-  const markChapterCompleted = (chapterId: string) => {
+  const markTopicCompleted = (topicId: string) => {
     setProgress((prev) => ({
       ...prev,
-      completedChapters: prev.completedChapters.includes(chapterId)
-        ? prev.completedChapters
-        : [...prev.completedChapters, chapterId],
+      completedTopics: prev.completedTopics.includes(topicId)
+        ? prev.completedTopics
+        : [...prev.completedTopics, topicId],
     }));
   };
 
-  const saveQuizScore = (chapterId: string, score: number) => {
+  const saveTopicQuizScore = (topicId: string, score: number) => {
     setProgress((prev) => ({
       ...prev,
-      quizScores: {
-        ...prev.quizScores,
-        [chapterId]: Math.max(score, prev.quizScores[chapterId] || 0),
+      topicQuizScores: {
+        ...prev.topicQuizScores,
+        [topicId]: Math.max(score, prev.topicQuizScores[topicId] || 0),
       },
     }));
   };
 
   return (
     <ProgressContext.Provider
-      value={{ progress, markChapterCompleted, saveQuizScore, isHydrated }}
+      value={{ progress, markTopicCompleted, saveTopicQuizScore, isHydrated }}
     >
       {children}
     </ProgressContext.Provider>

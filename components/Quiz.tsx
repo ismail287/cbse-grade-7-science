@@ -9,11 +9,12 @@ import Link from "next/link";
 
 interface QuizProps {
   chapterId: string;
+  topicId: string;
   questions: QuizQuestion[];
 }
 
-export function Quiz({ chapterId, questions }: QuizProps) {
-  const { markChapterCompleted, saveQuizScore } = useProgress();
+export function Quiz({ chapterId, topicId, questions }: QuizProps) {
+  const { markTopicCompleted, saveTopicQuizScore } = useProgress();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [isAnswered, setIsAnswered] = useState(false);
@@ -41,9 +42,9 @@ export function Quiz({ chapterId, questions }: QuizProps) {
       const finalScore = score + (selectedOption === currentQuestion.correctAnswerIndex ? 1 : 0);
       const percentage = Math.round((finalScore / questions.length) * 100);
       
-      saveQuizScore(chapterId, percentage);
+      saveTopicQuizScore(topicId, percentage);
       if (percentage >= 50) { // Passing score
-        markChapterCompleted(chapterId);
+        markTopicCompleted(topicId);
       }
       setShowResults(true);
     }
@@ -73,7 +74,7 @@ export function Quiz({ chapterId, questions }: QuizProps) {
           </div>
           
           <h3 className="text-3xl font-extrabold text-foreground">
-            {passed ? "Chapter Completed!" : "Keep Trying!"}
+            {passed ? "Topic Completed!" : "Keep Trying!"}
           </h3>
           
           <p className="text-xl text-foreground/70">
@@ -90,10 +91,10 @@ export function Quiz({ chapterId, questions }: QuizProps) {
             </button>
             {passed && (
               <Link
-                href="/"
+                href={`/chapters/${chapterId}`}
                 className="px-6 py-3 rounded-xl bg-primary-500 hover:bg-primary-600 text-white font-medium transition-colors flex items-center gap-2"
               >
-                Return to Dashboard
+                Return to Topic List
                 <ArrowRight size={20} />
               </Link>
             )}

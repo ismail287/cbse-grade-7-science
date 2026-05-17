@@ -9,7 +9,9 @@ interface ChapterCardProps {
   chapter: Chapter;
   isCompleted: boolean;
   isLocked: boolean;
-  score: number;
+  completedTopicsCount: number;
+  totalTopicsCount: number;
+  avgScore: number;
 }
 
 const SubjectIcon = ({ subject }: { subject: Chapter["subject"] }) => {
@@ -25,7 +27,18 @@ const SubjectIcon = ({ subject }: { subject: Chapter["subject"] }) => {
   }
 };
 
-export function ChapterCard({ chapter, isCompleted, isLocked, score }: ChapterCardProps) {
+export function ChapterCard({ 
+  chapter, 
+  isCompleted, 
+  isLocked, 
+  completedTopicsCount, 
+  totalTopicsCount, 
+  avgScore 
+}: ChapterCardProps) {
+  const completionPercentage = totalTopicsCount > 0 
+    ? (completedTopicsCount / totalTopicsCount) * 100 
+    : 0;
+
   return (
     <motion.div
       whileHover={!isLocked ? { scale: 1.02, y: -4 } : {}}
@@ -69,28 +82,37 @@ export function ChapterCard({ chapter, isCompleted, isLocked, score }: ChapterCa
         <div className="mt-auto">
           {!isLocked && (
             <div className="flex items-center justify-between">
-              {score > 0 ? (
+              {totalTopicsCount > 0 ? (
                 <div className="flex flex-col w-full mr-4">
                   <div className="flex justify-between text-xs mb-1 text-foreground/60">
-                    <span>Quiz Score</span>
-                    <span className="font-semibold text-foreground">{score}%</span>
+                    <span>Topics Mastered</span>
+                    <span className="font-semibold text-foreground">
+                      {completedTopicsCount}/{totalTopicsCount}
+                    </span>
                   </div>
-                  <div className="h-1.5 w-full bg-secondary-50 dark:bg-slate-700 rounded-full overflow-hidden">
+                  <div className="h-1.5 w-full bg-secondary-50 dark:bg-slate-700 rounded-full overflow-hidden mb-2">
                     <div
-                      className="h-full bg-emerald-500 rounded-full"
-                      style={{ width: `${score}%` }}
+                      className="h-full bg-primary-500 rounded-full"
+                      style={{ width: `${completionPercentage}%` }}
                     />
                   </div>
+                  
+                  {avgScore > 0 && (
+                    <div className="flex justify-between text-xs text-foreground/60">
+                      <span>Avg Score</span>
+                      <span className="font-semibold text-emerald-600 dark:text-emerald-400">{avgScore}%</span>
+                    </div>
+                  )}
                 </div>
               ) : (
                 <div className="text-xs font-medium text-foreground/50">
-                  Not started
+                  Coming soon
                 </div>
               )}
               
               <Link
                 href={`/chapters/${chapter.id}`}
-                className="flex-shrink-0 bg-primary-500 hover:bg-primary-600 text-white p-2 rounded-full transition-colors"
+                className="flex-shrink-0 bg-primary-500 hover:bg-primary-600 text-white p-2 rounded-full transition-colors mt-auto"
                 aria-label={`Start chapter ${chapter.id}`}
               >
                 <PlayCircle size={20} />
