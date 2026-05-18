@@ -3,7 +3,8 @@ export type Subject = "Biology" | "Chemistry" | "Physics";
 export interface ContentBlock {
   type: "text" | "definition" | "formula" | "diagram" | "important" | "example" | "image";
   content: string;
-  diagramUrl?: string; // Optional URL or placeholder name for SVG/Images
+  diagramUrl?: string; // For standalone image blocks (type="image")
+  imageUrl?: string;   // For companion visuals inside example/important blocks
 }
 
 export interface QuizQuestion {

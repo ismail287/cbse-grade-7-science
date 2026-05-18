@@ -145,14 +145,28 @@ export default async function TopicPage({ params }: TopicPageProps) {
             }
             if (block.type === 'example') {
               return (
-                <div key={idx} className="bg-cyan-50 dark:bg-cyan-900/20 border-l-4 border-cyan-500 p-6 rounded-r-xl my-6 shadow-sm">
-                  <div className="flex items-center gap-2 mb-2 text-cyan-700 dark:text-cyan-400 font-bold">
-                    <Lightbulb size={20} />
-                    <span>Example</span>
+                <div key={idx} className="bg-cyan-50 dark:bg-cyan-900/20 border-l-4 border-cyan-500 rounded-xl my-6 shadow-sm overflow-hidden">
+                  <div className={`flex flex-col ${block.imageUrl ? 'md:flex-row' : ''} gap-0`}>
+                    {block.imageUrl && (
+                      <div className="relative w-full md:w-56 flex-shrink-0 min-h-[200px] bg-white dark:bg-slate-900/50">
+                        <Image
+                          src={block.imageUrl}
+                          alt={block.content.substring(0, 60)}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    )}
+                    <div className="p-6">
+                      <div className="flex items-center gap-2 mb-2 text-cyan-700 dark:text-cyan-400 font-bold">
+                        <Lightbulb size={20} />
+                        <span>Example</span>
+                      </div>
+                      <p className="text-lg text-foreground/90 italic">
+                        {block.content}
+                      </p>
+                    </div>
                   </div>
-                  <p className="text-lg text-foreground/90 italic">
-                    {block.content}
-                  </p>
                 </div>
               );
             }
